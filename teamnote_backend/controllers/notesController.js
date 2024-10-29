@@ -29,6 +29,7 @@ const getAllNotes = async (req, res) => {
 // @access Private
 const createNewNote = async (req, res) => {
     const { user, title, text } = req.body
+    console.log(req.body)
 
     // Confirm data
     if (!user || !title || !text) {
@@ -42,8 +43,12 @@ const createNewNote = async (req, res) => {
         return res.status(409).json({ message: 'Duplicate note title' })
     }
 
-    // Create and store the new user 
-    const note = await Note.create({ user, title, text })
+    // generate current ticket Number
+    const lastNote = await Note.findOne().sort({ ticket: -1 }).exec()
+    const nextTicket = lastNote ? lastNote.ticket + 1 : 500; // default starting from 500
+
+    // Create and store the new note 
+    const note = await Note.create({ user, title, text, ticket: nextTicket })
 
     if (note) { // Created 
         return res.status(201).json({ message: 'New note created' })

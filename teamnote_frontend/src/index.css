@@ -10,7 +10,7 @@
 
 :root {
   /* COLORS */
-  --BGCOLOR: #0F172A;
+  --BGCOLOR: #8997b8;
   --BORDER-COLOR: #FFF;
   --COLOR: #FFF;
   --ERROR: firebrick;
@@ -234,7 +234,6 @@ tr {
 }
 
 /* ||  NOTE */
-
 .note__created,
 .note__updated,
 .note__username {
@@ -252,6 +251,7 @@ tr {
 .note__status--completed {
   color: var(--STATUS-COMPLETE);
 }
+
 
 
 /* || FORM - GENERAL */
